@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<head>
+	<title> Agivis Coffee </title>
+	<script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+	<script src="controller.js"></script>
+	<!--<style type="text/css" src="index.css"></style>-->
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="">
+
+	<!-- <p> Login: {{ nome }}</p>
+	<input type="text" ng-model="nome">  -->     
+<br>
+<div ng-controller="controller" align="center" class="nome">
+	<form ng-click="reset()">Nome:
+		<input type="text" ng-model="pessoa.nome" />
+		
+		<button ng-click="add(pessoa, id)">Enter</button>
+		<!--<button ng-click="reset()">Reset</button>-->
+	</form>
+
+	<br>
+
+	 <h1> Quem é o motorista da rodada? </h1>
+	 <table>
+	<tr>
+		<td ng-repeat="pessoa in lista">
+		<button type="button" ng-click="remove($index)" class="pessoas">{{pessoa.nome}}</button>
+		<br>
+		</td>
+	</tr>
+	</table>
+	
+	
+
+	<br><br><br><br>
+
+		<button ng-click="aponta()" class="select" >SELECT</button> 
+			<br>
+			<h2><font color="#CD0000">O motorista é: </font><h2> {{escolhido}}
+	</div>
+
+
+  
+
+</body>
+
+</html>
