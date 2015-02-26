@@ -3,11 +3,11 @@ function controller($scope) {
 
    $scope.add = function (pessoa, id) {
         console.log("add");
-      
         $scope.lista.push($scope.pessoa);
         $scope.pessoa = {};
 		$scope.pessoa.id = $scope.lista.length;
     	console.log($scope.pessoa.id);
+        $scope.pessoa.select=false;
     };
     	
 
@@ -36,30 +36,46 @@ function controller($scope) {
         var num = random();
         var i;
         var escolhido;
+        var but;
+        
+
+        for(i=1;i<=$scope.lista.length;i++){
+            but = document.querySelectorAll("button");//.className = "pessoas ng-binding";
+            but[i].style.backgroundColor = "#FFD700";
+            but[i].style.color = "#CD0000";
+        }
+
+        var achou = false;
+
         if($scope.lista.length > 1){
             for(i=0;i<=$scope.lista.length-1;i++){
-            
                 if(i == num){
                     //console.log("if");
-                    escolhido = $scope.lista[i].nome;
-                    console.log($scope.lista[i])
-                    console.log($scope.lista[i].nome);
+                    $scope.escolhido = $scope.lista[i].nome;
+                    console.log($scope.lista[i]);
+                    //showSelect(num);
+                    but = document.querySelectorAll("button");//.className = "selecionado ng-binding";
+                    but[i+1].style.backgroundColor = "#CD0000";
+                    but[i+1].style.color = "#ffffff";
+                    //console.log(but[i]);
+                    achou = true;
                 }
             }
+            if(achou == false){
+                $scope.aponta();
+            }
             return num;
+            setTimeout($scope.aponta(),100000);
         }
         else{
+            $scope.escolhido = $scope.lista[0].nome;
             console.log($scope.lista[0].nome);
+            but = document.querySelectorAll("button");//.className = "selecionado ng-binding";
+            but[1].style.backgroundColor = "#CD0000";
+            but[1].style.color = "#ffffff";
         }
+
     }
 
 
-
-
-
-    
-
-
-
 };
-
